@@ -4,7 +4,7 @@ import { io } from "socket.io-client";
 import axios from "axios";
 
 
-const socket = io("http://localhost:5000"); // Change if deployed
+const socket = io("https://chatify-my21.onrender.com"); // Change if deployed
 
 const Chat = () => {
   const navigate = useNavigate();
@@ -25,7 +25,7 @@ const Chat = () => {
   const fetchFriendUsername = async () => {
     if (!userId) return;
     try {
-      const response = await axios.get(`http://localhost:5000/api/users/${userId}`, {
+      const response = await axios.get(`https://chatify-my21.onrender.com/api/users/${userId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setFriendUsername(response.data.username);
@@ -69,7 +69,7 @@ const Chat = () => {
     // Fetch chat history
     if (userId) {
       axios
-        .get(`http://localhost:5000/api/chat/${senderId}/${userId}`, {
+        .get(`https://chatify-my21.onrender.com/api/chat/${senderId}/${userId}`, {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((res) => setMessages(res.data))
@@ -78,7 +78,7 @@ const Chat = () => {
 
     // Fetch friends list
     axios
-      .get(`http://localhost:5000/api/users/friends`, {
+      .get(`https://chatify-my21.onrender.com/api/users/friends`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
@@ -91,7 +91,7 @@ const Chat = () => {
 
     // Fetch pending friend requests
     axios
-      .get("http://localhost:5000/api/users/friend-requests", {
+      .get("https://chatify-my21.onrender.com/api/users/friend-requests", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => setPendingRequests(res.data))
@@ -120,7 +120,7 @@ const Chat = () => {
       const sendMessageToAI = async (message) => {
         try {
           const response = await axios.post(
-            "http://localhost:5000/api/chat/ai",
+            "https://chatify-my21.onrender.com/api/chat/ai",
             { message },
             { headers: { Authorization: `Bearer ${token}` } }
           );
@@ -168,7 +168,7 @@ const Chat = () => {
     socket.emit("private message", msgData);
 
     axios
-      .post("http://localhost:5000/api/chat/send", msgData, {
+      .post("https://chatify-my21.onrender.com/api/chat/send", msgData, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then(() => setMessages((prev) => [...prev, msgData]))
@@ -180,7 +180,7 @@ const Chat = () => {
   const handleFriendRequest = (requesterId, action) => {
     axios
       .post(
-        "http://localhost:5000/api/users/handle-friend-request",
+        "https://chatify-my21.onrender.com/api/users/handle-friend-request",
         { senderId: requesterId, action },
         { headers: { Authorization: `Bearer ${token}` } }
       )

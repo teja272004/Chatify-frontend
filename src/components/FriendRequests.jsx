@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { io } from "socket.io-client";
 
-const socket = io("http://localhost:5000");
+const socket = io("https://chatify-my21.onrender.com");
 
 const FriendRequests = () => {
   const [requests, setRequests] = useState([]);
@@ -11,7 +11,7 @@ const FriendRequests = () => {
   useEffect(() => {
     const fetchRequests = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/users/friend-requests", {
+        const res = await axios.get("https://chatify-my21.onrender.com/api/users/friend-requests", {
           headers: { Authorization: `Bearer ${token}` },
         });
 

@@ -3,7 +3,7 @@ import { io } from "socket.io-client";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const socket = io("http://localhost:5000");
+const socket = io("https://chatify-my21.onrender.com");
 
 const FriendsList = () => {
   const [friends, setFriends] = useState([]);
@@ -14,7 +14,7 @@ const FriendsList = () => {
   useEffect(() => {
     const fetchFriends = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/users/friends", {
+        const res = await axios.get("https://chatify-my21.onrender.com/api/users/friends", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setFriends(res.data);

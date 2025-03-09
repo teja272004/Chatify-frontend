@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { io } from "socket.io-client";
 import Peer from "simple-peer";
 
-const socket = io("http://localhost:5000"); // Update with your backend URL
+const socket = io("https://chatify-my21.onrender.com"); // Update with your backend URL
 
 const CallPage = () => {
   const navigate = useNavigate();

@@ -17,7 +17,7 @@ const Search = () => {
   // Fetch current user's friends
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/users/friends", {
+      .get("https://chatify-my21.onrender.com/api/users/friends", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => setFriends(res.data))
@@ -37,7 +37,7 @@ const Search = () => {
 
       try {
         const res = await axios.get(
-          `http://localhost:5000/api/users/search?username=${query}`,
+          `https://chatify-my21.onrender.com/api/users/search?username=${query}`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
         setResults(res.data);
@@ -61,7 +61,7 @@ const Search = () => {
 
     try {
       await axios.post(
-        "http://localhost:5000/api/users/send-friend-request",
+        "https://chatify-my21.onrender.com/api/users/send-friend-request",
         { recipientId: userId },
         { headers: { Authorization: `Bearer ${token}` } }
       );

@@ -19,7 +19,7 @@ const Login = () => {
   
     try {
       console.log("Logging In")
-      const response = await axios.post("http://localhost:5000/api/auth/login", formData);
+      const response = await axios.post("https://chatify-my21.onrender.com/api/auth/login", formData);
       
       console.log("API Response:", response.data);  // ✅ Debugging line
   
